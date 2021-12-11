@@ -3,10 +3,9 @@ z_pos = 0
 aim = 0
 
 with open("input2.txt") as file:
-	instructions = file.readlines()
+	instructions = file.read().splitlines()
 
 for course in instructions:
-	course = course.strip()
 	amount = int(course[-1:])
 	if course[0:1] == 'f':
 		x_pos += amount

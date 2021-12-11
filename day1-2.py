@@ -4,7 +4,7 @@ depth_2 = None
 depth_3 = None
 
 with open("input1.txt") as file:
-	depths = file.readlines()
+	depths = file.read().splitlines()
 	
 for depth in depths:
 	depth = int(depth)
@@ -21,7 +21,7 @@ for depth in depths:
 		depth_1 = depth_2
 		depth_2 = depth_3
 		depth_3 = depth
-	if (triad:=depth_1 + depth_2 + depth_3) > last_triad:
+	if (triad := depth_1 + depth_2 + depth_3) > last_triad:
 		count += 1
 	last_triad = triad
 

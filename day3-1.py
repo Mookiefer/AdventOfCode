@@ -3,10 +3,9 @@ epsilon_rate = ''
 ones = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 with open("input3.txt") as file:
-	report = file.readlines()
+	report = file.read().splitlines()
 
 for number in report:
-	number = number.strip()
 	for bit in range(12):
 		if number[bit] == '1':
 			ones[bit] += 1

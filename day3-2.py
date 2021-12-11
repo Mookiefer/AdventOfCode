@@ -1,25 +1,50 @@
-gamma_rate = ''
-epsilon_rate = ''
-ones = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-
 with open("input3.txt") as file:
-	report = file.readlines()
+	report = file.read().splitlines()
 
-for number in report:
-	number = number.strip()
-	for bit in range(12):
-		if number[bit] == '1':
-			ones[bit] += 1
-
-for count in ones:
-	if count > 500:
-		gamma_rate += '1'
-		epsilon_rate += '0'
+def gamma_rate(num_list, bit_pos):
+	ones = 0
+	zeros = 0
+	for number in num_list:
+		if number[bit_pos] == '1':
+			ones += 1
+		else:
+			zeros += 1
+	if ones > zeros:
+		return '1'
+	elif zeros > ones:
+		return '0'
 	else:
-		gamma_rate += '0'
-		epsilon_rate += '1'
-		
-gamma_rate = int(gamma_rate, 2)
-epsilon_rate = int(epsilon_rate, 2)
+		return '1'
 
-print(gamma_rate * epsilon_rate)
+def epsilon_rate(num_list, bit_pos):
+	ones = 0
+	zeros = 0
+	for number in num_list:
+		if number[bit_pos] == '1':
+			ones += 1
+		else:
+			zeros += 1
+	if ones < zeros:
+		return '1'
+	elif zeros < ones:
+		return '0'
+	else:
+		return '0'
+
+ogr = report.copy()
+for bit in range(12):
+	if len(ogr) > 1:
+		gr = gamma_rate(ogr, bit)
+		for value in reversed(ogr):
+			if value[bit] != gr:
+				ogr.remove(value)
+
+csr = report.copy()
+for bit in range(12):
+	if len(csr) > 1:
+		er = epsilon_rate(csr, bit)
+		for value in reversed(csr):
+			if value[bit] != er:
+				csr.remove(value)
+
+print(int(ogr[0], 2) * int(csr[0], 2))
