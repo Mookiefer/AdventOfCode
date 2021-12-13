@@ -36,18 +36,20 @@ def score_win(bingo):
                 board_score += int(bingo[i][j])
     return board_score
 
-winner = False
 score = 0
 value = 0
 for draw in draws:
-    if winner:
-        print(score * value)
-        break
-    for board in boards:
+    winners = []
+    for index, board in enumerate(boards):
         for x in range(5):
             for y in range(5):
                 if board[x][y] == draw:
                     board[x][y] = 'X'
-                    winner = check_win(board)
-                    score = score_win(board)
-                    value = int(draw)
+                    if check_win(board):
+                        score = score_win(board)
+                        value = int(draw)
+                        winners.append(index)
+    for win in reversed(winners):
+        del boards[win]
+    if len(boards) == 1:
+        print(value * score)
