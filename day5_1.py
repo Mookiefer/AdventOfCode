@@ -37,4 +37,4 @@ for i, x in enumerate(matrix):
         if y > 1:
             count += 1
 
-print(count)
+print("day5_1", count)  # 7318

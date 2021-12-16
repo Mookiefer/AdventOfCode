@@ -47,4 +47,4 @@ for bit in range(12):
 			if value[bit] != er:
 				csr.remove(value)
 
-print(int(ogr[0], 2) * int(csr[0], 2))
+print("day3_2", int(ogr[0], 2) * int(csr[0], 2))  # 5941884

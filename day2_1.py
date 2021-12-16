@@ -15,4 +15,4 @@ for course in instructions:
 	else:
 		print("What?!?")
 
-print(x_pos * z_pos)
+print("day2_1", x_pos * z_pos)  # 1580000

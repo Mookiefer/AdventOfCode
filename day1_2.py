@@ -25,4 +25,4 @@ for depth in depths:
 		count += 1
 	last_triad = triad
 
-print(count)
+print("day1_2", count)  # 1645

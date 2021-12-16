@@ -13,4 +13,4 @@ for depth in depths:
 		count += 1
 	last_depth = depth
 
-print(count)
+print("day1_1", count)  # 1616

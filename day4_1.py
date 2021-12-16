@@ -40,9 +40,6 @@ winner = False
 score = 0
 value = 0
 for draw in draws:
-    if winner:
-        print(score * value)
-        break
     for board in boards:
         for x in range(5):
             for y in range(5):
@@ -51,3 +48,6 @@ for draw in draws:
                     winner = check_win(board)
                     score = score_win(board)
                     value = int(draw)
+    if winner:
+        print("day4_1", score * value)  # 16716
+        break

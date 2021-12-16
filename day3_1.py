@@ -21,4 +21,4 @@ for count in ones:
 gamma_rate = int(gamma_rate, 2)
 epsilon_rate = int(epsilon_rate, 2)
 
-print(gamma_rate * epsilon_rate)
+print("day3_1", gamma_rate * epsilon_rate)  # 4006064

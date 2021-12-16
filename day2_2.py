@@ -17,4 +17,4 @@ for course in instructions:
 	else:
 		print("What?!?")
 
-print(x_pos * z_pos)
+print("day2_2", x_pos * z_pos)  # 1251263225
