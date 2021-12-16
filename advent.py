@@ -10,5 +10,7 @@
 # import day5_2
 # import day6_1
 # import day6_2
-import day7_1
-import day7_2
+# import day7_1
+# import day7_2
+import day8_1
+import day8_2
