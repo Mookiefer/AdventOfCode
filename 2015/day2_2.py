@@ -1,22 +1,22 @@
 with open("input2.txt") as file:
 	measurements = file.read().splitlines()
 
-total_area = 0
+total_ribbon = 0
 for measurement in measurements:
 	l, w, h = measurement.split("x")
-	x = int(l) * int(w)
-	y = int(w) * int(h)
-	z = int(h) * int(l)
+	bow = int(l) * int(w) * int(h)
+	x = int(l) + int(w)
+	y = int(w) + int(h)
+	z = int(h) + int(l)
 	if x <= y and x <= z:
-		extra = x
+		ribbon = 2 * x
 	elif y <= x and y <= z:
-		extra = y
+		ribbon = 2 * y
 	elif z <= x and z <= y:
-		extra = z
+		ribbon = 2 * z
 	else:
-		extra = 0
+		ribbon = 0
 		print("What?")
-	area = 2 * (x + y + z)
-	total_area += area + extra
+	total_ribbon += ribbon + bow
 
-print("day2_2", total_area)  # XXX
+print("day2_2", total_ribbon)  # 3812909
