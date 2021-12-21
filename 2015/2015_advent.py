@@ -6,13 +6,45 @@
 # import day3_2
 # import day4_1
 # import day4_2
-import day5_1
-import day5_2
-# import day6_1
-# import day6_2
+# import day5_1
+# import day5_2
+import day6_1
+import day6_2
 # import day7_1
 # import day7_2
 # import day8_1
 # import day8_2
 # import day9_1
 # import day9_2
+# import day10_1
+# import day10_2
+# import day11_1
+# import day11_2
+# import day12_1
+# import day12_2
+# import day13_1
+# import day13_2
+# import day14_1
+# import day14_2
+# import day15_1
+# import day15_2
+# import day16_1
+# import day16_2
+# import day17_1
+# import day17_2
+# import day18_1
+# import day18_2
+# import day19_1
+# import day19_2
+# import day20_1
+# import day20_2
+# import day21_1
+# import day21_2
+# import day22_1
+# import day22_2
+# import day23_1
+# import day23_2
+# import day24_1
+# import day24_2
+# import day25_1
+# import day25_2
