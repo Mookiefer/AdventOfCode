@@ -1,5 +1,5 @@
 with open("input9.txt") as file:
-	puzzle_input = file.read().strip().splitlines()
+	puzzle_input = file.read().splitlines()
 
 height_map = []
 for index, line in enumerate(puzzle_input):

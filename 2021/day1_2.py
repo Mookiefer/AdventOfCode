@@ -1,11 +1,11 @@
+with open("input1.txt") as file:
+	depths = file.read().splitlines()
+
 count = 0
 depth_1 = None
 depth_2 = None
 depth_3 = None
 
-with open("input1.txt") as file:
-	depths = file.read().splitlines()
-	
 for depth in depths:
 	depth = int(depth)
 	if depth_1 is None:

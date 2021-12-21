@@ -1,9 +1,9 @@
+with open("input2.txt") as file:
+	instructions = file.read().splitlines()
+
 x_pos = 0
 z_pos = 0
 aim = 0
-
-with open("input2.txt") as file:
-	instructions = file.read().splitlines()
 
 for course in instructions:
 	amount = int(course[-1:])

@@ -1,5 +1,5 @@
 with open("input1.txt") as file:
-	directions = file.read().strip()
+	directions = file.read()
 
 floor = 0
 basement = 0

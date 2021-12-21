@@ -1,5 +1,5 @@
 with open("input5.txt") as file:
-	santa_list = file.read().strip().splitlines()
+	santa_list = file.read().splitlines()
 
 nice = 0
 bad = ("ab", "cd", "pq", "xy")

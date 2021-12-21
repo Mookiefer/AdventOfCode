@@ -1,5 +1,5 @@
 with open("input7.txt") as file:
-	position_list = file.readline().strip().split(',')
+	position_list = file.read().split(',')
 
 crabs = []
 for position in position_list:

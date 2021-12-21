@@ -1,5 +1,5 @@
 with open("input5.txt") as file:
-	lines = file.read().strip().splitlines()
+	lines = file.read().splitlines()
 
 for index, line in enumerate(lines):
 	lines[index] = line.split(' -> ')

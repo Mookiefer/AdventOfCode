@@ -1,5 +1,5 @@
 with open("input6.txt") as file:
-	fish_list = file.readline().strip().split(',')
+	fish_list = file.read().split(',')
 
 ocean = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 for fish in fish_list:

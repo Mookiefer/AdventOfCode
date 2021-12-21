@@ -1,5 +1,5 @@
 with open("input3.txt") as file:
-	directions = file.read().strip()
+	directions = file.read()
 
 homes = {(0, 0)}
 location = [0, 0]

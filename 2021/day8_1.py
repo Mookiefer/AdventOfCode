@@ -1,5 +1,5 @@
 with open("input8.txt") as file:
-	display = file.read().strip().splitlines()
+	display = file.read().splitlines()
 
 digits = []
 output = []

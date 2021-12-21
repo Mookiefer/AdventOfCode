@@ -1,9 +1,9 @@
+with open("input3.txt") as file:
+	report = file.read().splitlines()
+
 gamma_rate = ''
 epsilon_rate = ''
 ones = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-
-with open("input3.txt") as file:
-	report = file.read().splitlines()
 
 for number in report:
 	for bit in range(12):

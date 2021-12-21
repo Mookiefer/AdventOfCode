@@ -1,7 +1,7 @@
 import hashlib
 
 with open("input4.txt") as file:
-	secret_key = file.read().strip()
+	secret_key = file.read()
 
 x = 0
 test = True

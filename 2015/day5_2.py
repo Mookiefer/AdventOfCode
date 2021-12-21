@@ -1,7 +1,7 @@
 import re
 
 with open("input5.txt") as file:
-	santa_list = file.read().strip().splitlines()
+	santa_list = file.read().splitlines()
 
 nice = 0
 for child in santa_list:

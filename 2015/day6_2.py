@@ -1,5 +1,5 @@
 with open("input6.txt") as file:
-	instructions = file.read().strip().splitlines()
+	instructions = file.read().splitlines()
 
 lights = [[0 for row in range(1000)] for column in range(1000)]
 
