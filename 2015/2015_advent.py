@@ -14,10 +14,10 @@
 # import day7_2
 # import day8_1
 # import day8_2
-import day9_1
-import day9_2
-# import day10_1
-# import day10_2
+# import day9_1
+# import day9_2
+import day10_1
+import day10_2
 # import day11_1
 # import day11_2
 # import day12_1
