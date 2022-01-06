@@ -22,10 +22,10 @@
 # import day11_2
 # import day12_1
 # import day12_2
-import day13_1
-import day13_2
-# import day14_1
-# import day14_2
+# import day13_1
+# import day13_2
+import day14_1
+import day14_2
 # import day15_1
 # import day15_2
 # import day16_1
