@@ -1,0 +1,702 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: https://adventofcode.com/2021/day/8
+Subject: Day 8 - Advent of Code 2021
+Date: Sun, 23 Jan 2022 04:12:43 -0000
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--PMMbV3kGB4pB07EkCZ7Wdvho2IzfJcmimyt4i7Q0IE----"
+
+
+------MultipartBoundary--PMMbV3kGB4pB07EkCZ7Wdvho2IzfJcmimyt4i7Q0IE----
+Content-Type: text/html
+Content-ID: <frame-E46D4CEC184008C953DB17A68AA76571@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://adventofcode.com/2021/day/8
+
+<!DOCTYPE html><html lang=3D"en-us"><head><meta http-equiv=3D"Content-Type"=
+ content=3D"text/html; charset=3DUTF-8">
+
+<title>Day 8 - Advent of Code 2021</title>
+<!--[if lt IE 9]><script src=3D"/static/html5.js"></script><![endif]-->
+<link href=3D"https://fonts.googleapis.com/css?family=3DSource+Code+Pro:300=
+&amp;subset=3Dlatin,latin-ext" rel=3D"stylesheet" type=3D"text/css">
+<link rel=3D"stylesheet" type=3D"text/css" href=3D"https://adventofcode.com=
+/static/style.css?26">
+<link rel=3D"stylesheet alternate" type=3D"text/css" href=3D"https://advent=
+ofcode.com/static/highcontrast.css?0" title=3D"High Contrast">
+<link rel=3D"shortcut icon" href=3D"https://adventofcode.com/favicon.png">
+</head><!--
+
+
+
+
+Oh, hello!  Funny seeing you here.
+
+I appreciate your enthusiasm, but you aren't going to find much down here.
+There certainly aren't clues to any of the puzzles.  The best surprises don=
+'t
+even appear in the source until you unlock them for real.
+
+Please be careful with automated requests; I'm not a massive company, and I=
+ can
+only take so much traffic.  Please be considerate so that everyone gets to =
+play.
+
+If you're curious about how Advent of Code works, it's running on some cust=
+om
+Perl code. Other than a few integrations (auth, analytics, social media), I
+built the whole thing myself, including the design, animations, prose, and =
+all
+of the puzzles.
+
+The puzzles are most of the work; preparing a new calendar and a new set of
+puzzles each year takes all of my free time for 4-5 months. A lot of effort
+went into building this thing - I hope you're enjoying playing it as much a=
+s I
+enjoyed making it for you!
+
+If you'd like to hang out, I'm @ericwastl on Twitter.
+
+- Eric Wastl
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+<body>
+<header><div><h1 class=3D"title-global"><a href=3D"https://adventofcode.com=
+/">Advent of Code</a></h1><nav><ul><li><a href=3D"https://adventofcode.com/=
+2021/about">[About]</a></li><li><a href=3D"https://adventofcode.com/2021/ev=
+ents">[Events]</a></li><li><a href=3D"https://teespring.com/stores/advent-o=
+f-code" target=3D"_blank">[Shop]</a></li><li><a href=3D"https://adventofcod=
+e.com/2021/settings">[Settings]</a></li><li><a href=3D"https://adventofcode=
+.com/2021/auth/logout">[Log Out]</a></li></ul></nav><div class=3D"user">Moo=
+kiefer <span class=3D"star-count">17*</span></div></div><div><h1 class=3D"t=
+itle-event">&nbsp;<span class=3D"title-event-wrap">{'year':</span><a href=
+=3D"https://adventofcode.com/2021">2021</a><span class=3D"title-event-wrap"=
+>}</span></h1><nav><ul><li><a href=3D"https://adventofcode.com/2021">[Calen=
+dar]</a></li><li><a href=3D"https://adventofcode.com/2021/support">[AoC++]<=
+/a></li><li><a href=3D"https://adventofcode.com/2021/sponsors">[Sponsors]</=
+a></li><li><a href=3D"https://adventofcode.com/2021/leaderboard">[Leaderboa=
+rd]</a></li><li><a href=3D"https://adventofcode.com/2021/stats">[Stats]</a>=
+</li></ul></nav></div></header>
+
+<div id=3D"sidebar">
+<div id=3D"sponsor"><div class=3D"quiet">Our <a href=3D"https://adventofcod=
+e.com/2021/sponsors">sponsors</a> help make Advent of Code possible:</div><=
+div class=3D"sponsor"><a href=3D"https://www.onelogin.com/company/careers" =
+target=3D"_blank" rel=3D"noopener">OneLogin</a> - *** Join us on the most r=
+eliable IAM space journey ***</div></div>
+</div><!--/sidebar-->
+
+<main>
+
+<article class=3D"day-desc"><h2>--- Day 8: Seven Segment Search ---</h2><p>=
+You barely reach the safety of the cave when the whale smashes into the cav=
+e mouth, collapsing it. Sensors indicate another exit to this cave at a muc=
+h greater depth, so you have no choice but to press on.</p>
+<p>As your submarine slowly makes its way through the cave system, you noti=
+ce that the four-digit <a href=3D"https://en.wikipedia.org/wiki/Seven-segme=
+nt_display" target=3D"_blank">seven-segment displays</a> in your submarine =
+are malfunctioning; <span title=3D"Yes, just the four-digit seven-segment o=
+nes. Whole batch must have been faulty.">they must have been damaged</span>=
+ during the escape. You'll be in a lot of trouble without them, so you'd be=
+tter figure out what's wrong.</p>
+<p>Each digit of a seven-segment display is rendered by turning on or off a=
+ny of seven segments named <code>a</code> through <code>g</code>:</p>
+<pre><code>  0:      1:      2:      3:      4:
+ <em>aaaa</em>    ....    <em>aaaa    aaaa</em>    ....
+<em>b    c</em>  .    <em>c</em>  .    <em>c</em>  .    <em>c  b    c</em>
+<em>b    c</em>  .    <em>c</em>  .    <em>c</em>  .    <em>c  b    c</em>
+ ....    ....    <em>dddd    dddd    dddd</em>
+<em>e    f</em>  .    <em>f  e</em>    .  .    <em>f</em>  .    <em>f</em>
+<em>e    f</em>  .    <em>f  e</em>    .  .    <em>f</em>  .    <em>f</em>
+ <em>gggg</em>    ....    <em>gggg    gggg</em>    ....
+
+  5:      6:      7:      8:      9:
+ <em>aaaa    aaaa    aaaa    aaaa    aaaa</em>
+<em>b</em>    .  <em>b</em>    .  .    <em>c  b    c  b    c</em>
+<em>b</em>    .  <em>b</em>    .  .    <em>c  b    c  b    c</em>
+ <em>dddd    dddd</em>    ....    <em>dddd    dddd</em>
+.    <em>f  e    f</em>  .    <em>f  e    f</em>  .    <em>f</em>
+.    <em>f  e    f</em>  .    <em>f  e    f</em>  .    <em>f</em>
+ <em>gggg    gggg</em>    ....    <em>gggg    gggg</em>
+</code></pre>
+<p>So, to render a <code>1</code>, only segments <code>c</code> and <code>f=
+</code> would be turned on; the rest would be off. To render a <code>7</cod=
+e>, only segments <code>a</code>, <code>c</code>, and <code>f</code> would =
+be turned on.</p>
+<p>The problem is that the signals which control the segments have been mix=
+ed up on each display. The submarine is still trying to display numbers by =
+producing output on signal wires <code>a</code> through <code>g</code>, but=
+ those wires are connected to segments <em>randomly</em>. Worse, the wire/s=
+egment connections are mixed up separately for each four-digit display! (Al=
+l of the digits <em>within</em> a display use the same connections, though.=
+)</p>
+<p>So, you might know that only signal wires <code>b</code> and <code>g</co=
+de> are turned on, but that doesn't mean <em>segments</em> <code>b</code> a=
+nd <code>g</code> are turned on: the only digit that uses two segments is <=
+code>1</code>, so it must mean segments <code>c</code> and <code>f</code> a=
+re meant to be on. With just that information, you still can't tell which w=
+ire (<code>b</code>/<code>g</code>) goes to which segment (<code>c</code>/<=
+code>f</code>). For that, you'll need to collect more information.</p>
+<p>For each display, you watch the changing signals for a while, make a not=
+e of <em>all ten unique signal patterns</em> you see, and then write down a=
+ single <em>four digit output value</em> (your puzzle input). Using the sig=
+nal patterns, you should be able to work out which pattern corresponds to w=
+hich digit.</p>
+<p>For example, here is what you might see in a single entry in your notes:=
+</p>
+<pre><code>acedgfb cdfbe gcdfa fbcad dab cefabd cdfgeb eafb cagedb ab |
+cdfeb fcadb cdfeb cdbaf</code></pre>
+<p>(The entry is wrapped here to two lines so it fits; in your notes, it wi=
+ll all be on a single line.)</p>
+<p>Each entry consists of ten <em>unique signal patterns</em>, a <code>|</c=
+ode> delimiter, and finally the <em>four digit output value</em>. Within an=
+ entry, the same wire/segment connections are used (but you don't know what=
+ the connections actually are). The unique signal patterns correspond to th=
+e ten different ways the submarine tries to render a digit using the curren=
+t wire/segment connections. Because <code>7</code> is the only digit that u=
+ses three segments, <code>dab</code> in the above example means that to ren=
+der a <code>7</code>, signal lines <code>d</code>, <code>a</code>, and <cod=
+e>b</code> are on. Because <code>4</code> is the only digit that uses four =
+segments, <code>eafb</code> means that to render a <code>4</code>, signal l=
+ines <code>e</code>, <code>a</code>, <code>f</code>, and <code>b</code> are=
+ on.</p>
+<p>Using this information, you should be able to work out which combination=
+ of signal wires corresponds to each of the ten digits. Then, you can decod=
+e the four digit output value. Unfortunately, in the above example, all of =
+the digits in the output value (<code>cdfeb fcadb cdfeb cdbaf</code>) use f=
+ive segments and are more difficult to deduce.</p>
+<p>For now, <em>focus on the easy digits</em>. Consider this larger example=
+:</p>
+<pre><code>be cfbegad cbdgef fgaecd cgeb fdcge agebfd fecdb fabcd edb |
+<em>fdgacbe</em> cefdb cefbgd <em>gcbe</em>
+edbfga begcd cbg gc gcadebf fbgde acbgfd abcde gfcbed gfec |
+fcgedb <em>cgb</em> <em>dgebacf</em> <em>gc</em>
+fgaebd cg bdaec gdafb agbcfd gdcbef bgcad gfac gcb cdgabef |
+<em>cg</em> <em>cg</em> fdcagb <em>cbg</em>
+fbegcd cbd adcefb dageb afcb bc aefdc ecdab fgdeca fcdbega |
+efabcd cedba gadfec <em>cb</em>
+aecbfdg fbg gf bafeg dbefa fcge gcbea fcaegb dgceab fcbdga |
+<em>gecf</em> <em>egdcabf</em> <em>bgf</em> bfgea
+fgeab ca afcebg bdacfeg cfaedg gcfdb baec bfadeg bafgc acf |
+<em>gebdcfa</em> <em>ecba</em> <em>ca</em> <em>fadegcb</em>
+dbcfg fgd bdegcaf fgec aegbdf ecdfab fbedc dacgb gdcebf gf |
+<em>cefg</em> dcbef <em>fcge</em> <em>gbcadfe</em>
+bdfegc cbegaf gecbf dfcage bdacg ed bedf ced adcbefg gebcd |
+<em>ed</em> bcgafe cdgba cbgef
+egadfb cdbfeg cegd fecab cgb gbdefca cg fgcdab egfdb bfceg |
+<em>gbdfcae</em> <em>bgc</em> <em>cg</em> <em>cgb</em>
+gcafb gcf dcaebfg ecagb gf abcdeg gaef cafbge fdbac fegbdc |
+<em>fgae</em> cfgab <em>fg</em> bagce
+</code></pre>
+<p>Because the digits <code>1</code>, <code>4</code>, <code>7</code>, and <=
+code>8</code> each use a unique number of segments, you should be able to t=
+ell which combinations of signals correspond to those digits. Counting <em>=
+only digits in the output values</em> (the part after <code>|</code> on eac=
+h line), in the above example, there are <code><em>26</em></code> instances=
+ of digits that use a unique number of segments (highlighted above).</p>
+<p><em>In the output values, how many times do digits <code>1</code>, <code=
+>4</code>, <code>7</code>, or <code>8</code> appear?</em></p>
+</article>
+<p>Your puzzle answer was <code>473</code>.</p><article class=3D"day-desc">=
+<h2 id=3D"part2">--- Part Two ---</h2><p>Through a little deduction, you sh=
+ould now be able to determine the remaining digits. Consider again the firs=
+t example above:</p>
+<pre><code>acedgfb cdfbe gcdfa fbcad dab cefabd cdfgeb eafb cagedb ab |
+cdfeb fcadb cdfeb cdbaf</code></pre>
+<p>After some careful analysis, the mapping between signal wires and segmen=
+ts only make sense in the following configuration:</p>
+<pre><code> dddd
+e    a
+e    a
+ ffff
+g    b
+g    b
+ cccc
+</code></pre>
+<p>So, the unique signal patterns would correspond to the following digits:=
+</p>
+<ul>
+<li><code>acedgfb</code>: <code>8</code></li>
+<li><code>cdfbe</code>: <code>5</code></li>
+<li><code>gcdfa</code>: <code>2</code></li>
+<li><code>fbcad</code>: <code>3</code></li>
+<li><code>dab</code>: <code>7</code></li>
+<li><code>cefabd</code>: <code>9</code></li>
+<li><code>cdfgeb</code>: <code>6</code></li>
+<li><code>eafb</code>: <code>4</code></li>
+<li><code>cagedb</code>: <code>0</code></li>
+<li><code>ab</code>: <code>1</code></li>
+</ul>
+<p>Then, the four digits of the output value can be decoded:</p>
+<ul>
+<li><code>cdfeb</code>: <code><em>5</em></code></li>
+<li><code>fcadb</code>: <code><em>3</em></code></li>
+<li><code>cdfeb</code>: <code><em>5</em></code></li>
+<li><code>cdbaf</code>: <code><em>3</em></code></li>
+</ul>
+<p>Therefore, the output value for this entry is <code><em>5353</em></code>=
+.</p>
+<p>Following this same process for each entry in the second, larger example=
+ above, the output value of each entry can be determined:</p>
+<ul>
+<li><code>fdgacbe cefdb cefbgd gcbe</code>: <code>8394</code></li>
+<li><code>fcgedb cgb dgebacf gc</code>: <code>9781</code></li>
+<li><code>cg cg fdcagb cbg</code>: <code>1197</code></li>
+<li><code>efabcd cedba gadfec cb</code>: <code>9361</code></li>
+<li><code>gecf egdcabf bgf bfgea</code>: <code>4873</code></li>
+<li><code>gebdcfa ecba ca fadegcb</code>: <code>8418</code></li>
+<li><code>cefg dcbef fcge gbcadfe</code>: <code>4548</code></li>
+<li><code>ed bcgafe cdgba cbgef</code>: <code>1625</code></li>
+<li><code>gbdfcae bgc cg cgb</code>: <code>8717</code></li>
+<li><code>fgae cfgab fg bagce</code>: <code>4315</code></li>
+</ul>
+<p>Adding all of the output values in this larger example produces <code><e=
+m>61229</em></code>.</p>
+<p>For each entry, determine all of the wire/segment connections and decode=
+ the four-digit output values. <em>What do you get if you add up all of the=
+ output values?</em></p>
+</article>
+<p>Your puzzle answer was <code>1097568</code>.</p><p class=3D"day-success"=
+>Both parts of this puzzle are complete! They provide two gold stars: **</p=
+>
+<p>At this point, you should <a href=3D"https://adventofcode.com/2021">retu=
+rn to your Advent calendar</a> and try another puzzle.</p>
+<p>If you still want to see it, you can <a href=3D"https://adventofcode.com=
+/2021/day/8/input" target=3D"_blank">get your puzzle input</a>.</p>
+<p>You can also <span class=3D"share">[Share<span class=3D"share-content">o=
+n
+  <a href=3D"https://twitter.com/intent/tweet?text=3DI%27ve+completed+%22Se=
+ven+Segment+Search%22+%2D+Day+8+%2D+Advent+of+Code+2021&amp;url=3Dhttps%3A%=
+2F%2Fadventofcode%2Ecom%2F2021%2Fday%2F8&amp;related=3Dericwastl&amp;hashta=
+gs=3DAdventOfCode" target=3D"_blank">Twitter</a>
+  <a target=3D"_blank">Mastodon</a></span>]</span> this puzzle.</p>
+</main>
+
+<!-- ga -->
+
+<!-- /ga -->
+
+</body></html>
+------MultipartBoundary--PMMbV3kGB4pB07EkCZ7Wdvho2IzfJcmimyt4i7Q0IE----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://fonts.googleapis.com/css?family=Source+Code+Pro:300&subset=latin,latin-ext
+
+@charset "utf-8";
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 300; src: url("https://fonts.gstatic.com/s/sourcecodepro/v18/HI_diYsKILx=
+Rpg3hIP6sJ7fM7PqPMcMnZFqUwX28DJKQtMRrTEUc.woff2") format("woff2"); unicode-=
+range: U+460-52F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2=
+F; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 300; src: url("https://fonts.gstatic.com/s/sourcecodepro/v18/HI_diYsKILx=
+Rpg3hIP6sJ7fM7PqPMcMnZFqUwX28DJKQtM1rTEUc.woff2") format("woff2"); unicode-=
+range: U+400-45F, U+490-491, U+4B0-4B1, U+2116; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 300; src: url("https://fonts.gstatic.com/s/sourcecodepro/v18/HI_diYsKILx=
+Rpg3hIP6sJ7fM7PqPMcMnZFqUwX28DJKQtMVrTEUc.woff2") format("woff2"); unicode-=
+range: U+1F00-1FFF; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 300; src: url("https://fonts.gstatic.com/s/sourcecodepro/v18/HI_diYsKILx=
+Rpg3hIP6sJ7fM7PqPMcMnZFqUwX28DJKQtMprTEUc.woff2") format("woff2"); unicode-=
+range: U+370-3FF; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 300; src: url("https://fonts.gstatic.com/s/sourcecodepro/v18/HI_diYsKILx=
+Rpg3hIP6sJ7fM7PqPMcMnZFqUwX28DJKQtMZrTEUc.woff2") format("woff2"); unicode-=
+range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+=
+1EA0-1EF9, U+20AB; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 300; src: url("https://fonts.gstatic.com/s/sourcecodepro/v18/HI_diYsKILx=
+Rpg3hIP6sJ7fM7PqPMcMnZFqUwX28DJKQtMdrTEUc.woff2") format("woff2"); unicode-=
+range: U+100-24F, U+259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2=
+113, U+2C60-2C7F, U+A720-A7FF; }
+
+@font-face { font-family: "Source Code Pro"; font-style: normal; font-weigh=
+t: 300; src: url("https://fonts.gstatic.com/s/sourcecodepro/v18/HI_diYsKILx=
+Rpg3hIP6sJ7fM7PqPMcMnZFqUwX28DJKQtMlrTA.woff2") format("woff2"); unicode-ra=
+nge: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+2000-206F,=
+ U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+------MultipartBoundary--PMMbV3kGB4pB07EkCZ7Wdvho2IzfJcmimyt4i7Q0IE----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://adventofcode.com/static/style.css?26
+
+@charset "utf-8";
+
+body { background: rgb(15, 15, 35); color: rgb(204, 204, 204); font-family:=
+ "Source Code Pro", monospace; font-size: 14pt; min-width: 60em; }
+
+img { border: 0px; }
+
+a { outline: 0px; }
+
+main, figure, figcaption { display: block; }
+
+pre, code { font-family: "Source Code Pro", monospace; }
+
+header, main { text-size-adjust: none; }
+
+a { text-decoration: none; color: rgb(0, 153, 0); }
+
+a:hover, a:focus { color: rgb(153, 255, 153); }
+
+h1, h2 { font-size: 1em; font-weight: normal; }
+
+code { position: relative; display: inline-block; margin: 0px; padding: 0px=
+; }
+
+code::before { z-index: -1; content: ""; position: absolute; display: block=
+; inset: 3px -2px 0px; border: 1px solid rgb(51, 51, 64); background: rgb(1=
+6, 16, 26); }
+
+pre.wrap { max-width: 100%; white-space: pre-wrap; }
+
+.quiet { opacity: 0.5; }
+
+p.wrap { width: 45em; }
+
+.hidden-layout { padding: 0px 0.5em; border: 1px solid transparent; }
+
+.hidden { border: 1px dotted gray; overflow: hidden; position: relative; pa=
+dding: 0px 0.5em; }
+
+.hidden::before { content: "(hover to view)"; position: absolute; opacity: =
+0.5; text-align: center; left: 0px; top: 0px; width: 100%; }
+
+.hidden > * { visibility: hidden; }
+
+.hidden:hover { border-color: transparent; }
+
+.hidden:hover::before { display: none; }
+
+.hidden:hover > * { visibility: visible; }
+
+.warning:not(.warning-active) { transition: color 1s ease 0s, opacity 1s ea=
+se 0s; }
+
+.warning-active { color: rgb(255, 0, 0); opacity: 1; }
+
+.star-count { color: rgb(255, 255, 102); }
+
+.supporter-badge { color: rgb(255, 255, 102); }
+
+a.supporter-badge:hover, a.supporter-badge:focus { text-decoration: none; c=
+olor: rgb(255, 255, 204); text-shadow: rgb(255, 255, 102) 0px 0px 5px; }
+
+.sponsor-badge { color: rgb(121, 162, 216); }
+
+a.sponsor-badge:hover, a.sponsor-badge:focus { text-decoration: none; color=
+: rgb(204, 219, 237); text-shadow: rgb(121, 162, 216) 0px 0px 5px; }
+
+#sidebar { width: 200px; float: right; margin: 0px 15px 2em 2em; position: =
+relative; z-index: 10; }
+
+#sponsor { margin-bottom: 2.5em; }
+
+header { white-space: nowrap; cursor: default; z-index: 100; margin-bottom:=
+ 2em; }
+
+header h1 { display: inline-block; margin: 0px; padding-right: 1em; }
+
+header h1 a, header h1 span { display: inline-block; text-decoration: none;=
+ color: rgb(0, 204, 0); text-shadow: rgb(0, 204, 0) 0px 0px 2px, rgb(0, 204=
+, 0) 0px 0px 5px; }
+
+header h1 a:hover, header h1 a:focus { color: rgb(153, 255, 153); text-shad=
+ow: rgb(153, 255, 153) 0px 0px 2px, rgb(153, 255, 153) 0px 0px 5px; }
+
+header h1.title-event .title-event-wrap { opacity: 0.33; white-space: pre; =
+}
+
+header .user { display: inline-block; padding-left: 1em; }
+
+header nav { display: inline-block; }
+
+header nav ul { list-style-type: none; padding: 0px; margin: 0px; display: =
+inline-block; }
+
+header nav li { display: inline-block; padding: 0px 0.6em; }
+
+header nav a { display: inline-block; text-decoration: none; outline: none;=
+ }
+
+input[type=3D"text"], textarea { color: inherit; border: 1px solid rgb(102,=
+ 102, 102); background: rgb(16, 16, 26); padding: 0px 2px; font-family: inh=
+erit; font-size: inherit; margin: 0px; }
+
+textarea { vertical-align: top; }
+
+label img { vertical-align: bottom; position: relative; top: -3px; margin-r=
+ight: 0.3em; }
+
+input[type=3D"radio"] { display: none; }
+
+input[type=3D"radio"] ~ span { cursor: pointer; display: inline-block; }
+
+input[type=3D"radio"] ~ span::before { content: "( ) "; }
+
+input[type=3D"radio"] ~ span:hover, input[type=3D"radio"] ~ span:focus { ba=
+ckground-color: rgb(25, 25, 59); }
+
+input[type=3D"radio"]:checked ~ span { color: rgb(255, 255, 255); }
+
+input[type=3D"radio"]:checked ~ span::before { content: "(O) "; }
+
+input[type=3D"checkbox"] { display: none; }
+
+input[type=3D"checkbox"] ~ span { cursor: pointer; display: inline-block; }
+
+input[type=3D"checkbox"] ~ span::before { content: "[ ] "; }
+
+input[type=3D"checkbox"] ~ span:hover, input[type=3D"checkbox"] ~ span:focu=
+s { background-color: rgb(25, 25, 59); }
+
+input[type=3D"checkbox"]:checked ~ span { color: rgb(255, 255, 255); }
+
+input[type=3D"checkbox"]:checked ~ span::before { content: "[X] "; }
+
+input[type=3D"checkbox"]:disabled ~ span { opacity: 0.3; cursor: default; }
+
+input[type=3D"checkbox"]:disabled ~ span::before { content: "[-] "; }
+
+input[type=3D"checkbox"]:disabled ~ span:hover { background-color: transpar=
+ent; }
+
+input[type=3D"submit"] { background: transparent; border: 0px; font-family:=
+ inherit; font-size: inherit; margin: 0px; padding: 0px; color: rgb(0, 153,=
+ 0); cursor: pointer; }
+
+input[type=3D"submit"]:hover, input[type=3D"submit"]:focus { color: rgb(153=
+, 255, 153); }
+
+article { width: 45em; margin-bottom: 2em; margin-top: 2em; }
+
+article:first-child { margin-top: 0px; }
+
+article h2 { color: rgb(255, 255, 255); margin-top: 1em; margin-bottom: 1em=
+; white-space: nowrap; }
+
+article h2 + * { margin-top: 0px; }
+
+article em { color: rgb(255, 255, 255); font-style: normal; text-shadow: rg=
+b(255, 255, 255) 0px 0px 5px; }
+
+article em.star { color: rgb(255, 255, 102); font-style: normal; text-shado=
+w: rgb(255, 255, 102) 0px 0px 5px; }
+
+article a { white-space: nowrap; }
+
+article .aside { opacity: 0.6; }
+
+article ul { list-style-type: none; padding: 0px; }
+
+article li { padding-left: 2.5em; position: relative; }
+
+article li::before { content: "=C2=A0=C2=A0-=C2=A0"; position: absolute; le=
+ft: 0px; top: 0px; }
+
+.day-success { color: rgb(255, 255, 102); text-shadow: rgb(255, 255, 102) 0=
+px 0px 5px; }
+
+form#settings input[type=3D"radio"] ~ span { min-width: 30em; }
+
+form#settings input[type=3D"checkbox"] ~ span { min-width: 30em; }
+
+.share { color: rgb(0, 153, 0); cursor: default; transition: color 0.2s eas=
+e 1s; }
+
+.share:hover, .share:focus-within { color: rgb(170, 255, 170); transition: =
+color 0.2s ease 0s; }
+
+.share .share-content { display: inline-block; vertical-align: text-bottom;=
+ white-space: nowrap; overflow: hidden; max-width: 0px; transition: max-wid=
+th 0.2s ease 1s; }
+
+.share .share-content::before { content: "=C2=A0"; }
+
+.share .share-content::after { }
+
+.share:hover .share-content, .share:focus-within .share-content { max-width=
+: 45em; transition: max-width 0.2s ease 0s; }
+
+.puzzle-input { border: 1px solid rgb(153, 153, 153); background: rgb(51, 5=
+1, 51); color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px =
+5px; }
+
+.calendar { cursor: default; user-select: none; }
+
+.calendar > span { color: rgb(51, 51, 51); }
+
+.calendar > a { text-decoration: none; color: rgb(102, 102, 102); outline: =
+none; cursor: default; }
+
+.calendar a:hover, .calendar a:focus { background-color: rgba(119, 119, 165=
+, 0.2); cursor: pointer; }
+
+#calendar-countdown { padding-left: 0.5em; color: rgb(204, 204, 204); }
+
+.calendar .calendar-day { color: rgb(102, 102, 102); }
+
+.calendar a .calendar-day { color: rgb(204, 204, 204); }
+
+.calendar a .calendar-mark-complete, .calendar a .calendar-mark-verycomplet=
+e { visibility: hidden; }
+
+.calendar a.calendar-complete .calendar-mark-complete, .calendar a.calendar=
+-verycomplete .calendar-mark-complete { visibility: visible; color: rgb(255=
+, 255, 102); }
+
+.calendar a.calendar-verycomplete .calendar-mark-verycomplete { visibility:=
+ visible; color: rgb(255, 255, 102); }
+
+.calendar .calendar-day-new { animation: 5s ease 0s 1 normal none running a=
+nim-day-new; }
+
+.calendar .calendar-day-new .calendar-day { animation: 5s ease 0s 1 normal =
+none running anim-day-new-day; }
+
+@keyframes anim-day-new {=20
+  0% { color: rgb(51, 51, 51); text-shadow: transparent 0px 0px 5px; }
+  25% { color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px =
+5px; }
+  100% { color: rgb(102, 102, 102); text-shadow: transparent 0px 0px 5px; }
+}
+
+@keyframes anim-day-new-day {=20
+  0% { color: rgb(102, 102, 102); text-shadow: transparent 0px 0px 5px; }
+  25% { color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px =
+5px; }
+  100% { color: rgb(204, 204, 204); text-shadow: transparent 0px 0px 5px; }
+}
+
+.eventlist-event { white-space: pre; }
+
+.stats > span, .stats > span .stats-firstonly, .stats > span .stats-both { =
+color: rgb(102, 102, 102); }
+
+.stats > a { color: rgb(204, 204, 204); min-width: 35em; display: inline-bl=
+ock; }
+
+.stats > a:hover, .stats > a:focus { background-color: rgb(30, 30, 70); }
+
+.stats-firstonly { color: rgb(153, 153, 204); }
+
+.stats-both { color: rgb(255, 255, 102); }
+
+.leaderboard-daylinks { cursor: default; }
+
+.leaderboard-daylinks-selected { color: rgb(255, 255, 255); text-shadow: rg=
+b(255, 255, 255) 0px 0px 5px; }
+
+.leaderboard-daydesc-first { color: rgb(153, 153, 204); }
+
+.leaderboard-daydesc-both { color: rgb(255, 255, 102); }
+
+.leaderboard-entry { white-space: pre; }
+
+.leaderboard-entry .leaderboard-totalscore { color: rgb(255, 255, 255); }
+
+.leaderboard-anon { opacity: 0.6; }
+
+.leaderboard-userphoto { display: inline-block; height: 20px; width: 20px; =
+margin: 0px 0.5em; text-align: center; }
+
+.leaderboard-userphoto img { height: 20px; max-width: 20px; vertical-align:=
+ middle; position: relative; top: -2px; }
+
+.leaderboard-time { opacity: 0.5; }
+
+.privboard-row { white-space: pre; }
+
+.privboard-name { vertical-align: text-bottom; }
+
+.privboard-days > span { display: inline-block; color: rgb(51, 51, 51); }
+
+.privboard-days > a { display: inline-block; }
+
+.privboard-star-locked { visibility: hidden; }
+
+.privboard-star-unlocked { color: rgb(51, 51, 51); }
+
+.privboard-star-firstonly { color: rgb(153, 153, 204); }
+
+.privboard-star-both { color: rgb(255, 255, 102); }
+
+.privboard-delbtn { opacity: 0.33; }
+
+.privboard-row:hover .privboard-delbtn { opacity: 1; }
+
+.sponsors { width: 46em; }
+
+.sponsor { margin: 1em 0px; }
+------MultipartBoundary--PMMbV3kGB4pB07EkCZ7Wdvho2IzfJcmimyt4i7Q0IE----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://adventofcode.com/static/highcontrast.css?0
+
+@charset "utf-8";
+
+* { background: white !important; color: black !important; text-shadow: non=
+e !important; }
+
+a { color: rgb(0, 0, 255) !important; text-decoration: underline !important=
+; }
+
+em { font-weight: 900 !important; }
+------MultipartBoundary--PMMbV3kGB4pB07EkCZ7Wdvho2IzfJcmimyt4i7Q0IE------
