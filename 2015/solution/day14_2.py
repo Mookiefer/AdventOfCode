@@ -3,7 +3,7 @@ def solve():
 		reindeer_raw = file.read().splitlines()
 
 	reindeer_times = list()
-	for index, item in enumerate(reindeer_raw):
+	for item in reindeer_raw:
 		x1 = item.replace(" can fly", "")
 		x2 = x1.replace(" km/s for", "")
 		x3 = x2.replace(" seconds, but then must rest for", "")
